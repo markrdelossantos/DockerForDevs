@@ -1,0 +1,6 @@
+version: '2'
+services:
+  tomcat:
+    build: ./java-restful-api/docker-files
+    ports:
+     - "8888:8080"
