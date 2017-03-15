@@ -7,39 +7,7 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
-    	<plugin>
-            <groupId>org.eclipse.m2e</groupId>
-            <artifactId>lifecycle-mapping</artifactId>
-            <version>1.0.0</version>
-            <configuration>
-                <lifecycleMappingMetadata>
-                    <pluginExecutions>
-                        <pluginExecution>
-                            <pluginExecutionFilter>
-                                <groupId>org.apache.tomcat.maven</groupId>
-                                <artifactId>tomcat7-maven-plugin</artifactId>
-                                <version>2.1</version>
-						  		<configuration>
-						          <url>http://192.168.99.100:8888/manager/text</url>
-						          <username>admin</username>
-						          <password>admin</password>
-						        </configuration>
-                                <goals>
-                                    <goal>tomcat7:redeploy</goal>
-                                </goals>
-                            </pluginExecutionFilter>
-                            <action>
-                                <execute>
-                                    <runOnIncremental>true</runOnIncremental>
-                                    <runOnConfiguration>true</runOnConfiguration>
-                                </execute>
-                            </action>
-                        </pluginExecution>
-                    </pluginExecutions>
-                </lifecycleMappingMetadata>
-            </configuration>
-        </plugin>
-      <plugin>
+       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
