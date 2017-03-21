@@ -8,7 +8,7 @@ const TARGET = process.env.npm_lifecycle_event;
 var devDep = {
     context: __dirname,
     devtool: debug ? "inline-sourcemap" : null,
-    entry: "./js/react-playaround.js",
+    entry: __dirname,
     module: {
       loaders: [
         {
@@ -24,7 +24,7 @@ var devDep = {
     },
     output: {
       path: __dirname + "/js",
-      filename: "react-playaround.min.js"
+      filename: "bundle.js"
     },
     plugins: debug ? [] : [
       new webpack.optimize.DedupePlugin(),
