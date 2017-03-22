@@ -9,4 +9,4 @@ services:
     ports:
       - "80:8080"
     volumes:
-      - /C_DRIVE/Presentation/DockerForDevs/react-frontend/app:/app
+      - /c/Users/madelos/DockerForDevs/react-frontend:/app
