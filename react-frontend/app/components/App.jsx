@@ -1,6 +1,7 @@
 import React from "react";
 
-// import Navbar from "./Navbar.jsx";
+import Navbar from "./Navbar.jsx";
+import TapClone from "./TapClone.jsx";
 
 export default class App extends React.Component {
     constructor() {
@@ -9,8 +10,10 @@ export default class App extends React.Component {
 
     render() {
         return (
-            // <Navbar/>
-            <h1>dfTestfsdfsdfingg</h1>
+            <div>
+                <Navbar/>
+                <TapClone/>
+            </div>
         );
     }
 }

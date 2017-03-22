@@ -22,7 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base app --host 0.0.0.0"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base app --port 80 --host 0.0.0.0"
   },
   "author": "",
   "license": "ISC"
