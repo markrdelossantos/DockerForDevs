@@ -9,4 +9,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /c/Users/madelos/DockerForDevs/react-frontend:/app
+      # OFFICE 
+      # - /c/Users/madelos/DockerForDevs/react-frontend:/app
+      # BAHAY
+       - /d/DockerForDevs/react-frontend:/app
