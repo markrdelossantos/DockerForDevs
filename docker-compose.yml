@@ -2,8 +2,8 @@ version: '2'
 services:
   tomcat:
     build: ./java-restful-api/docker-files
-    # ports:
-    #  - "8888:8080"
+    ports:
+     - "8888:8080"
   frontend:
     build: ./react-frontend/
     # ports:
@@ -13,6 +13,8 @@ services:
       - /c/Users/madelos/DockerForDevs/react-frontend:/app
       # BAHAY
       #  - /d/DockerForDevs/react-frontend:/app
+    # links:
+    #   - redis
   nginx:
     image: nginx:1.11-alpine
     volumes:
@@ -22,3 +24,5 @@ services:
     ports:
       - "9999:9999"
     entrypoint: nginx -c /conf/docker.conf
+  redis:
+    image: redis:3.2.5-alpine

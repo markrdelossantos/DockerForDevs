@@ -7,11 +7,22 @@ class TapAction {
     constructor() {
     }
 
-    sendTap() {
+    sendTest() {
         const api = "/api/test";
 
         $.get(api, (data) => {
             console.log("success");
+            console.log(data);
+        })
+        .fail((someError) => {
+            console.log(someError);
+        });
+    }
+
+    sendTap(token) {
+        const api = "/api/tap/incr/" + token;
+
+        $.get(api, (data) => {
             console.log(data);
         })
         .fail((someError) => {
