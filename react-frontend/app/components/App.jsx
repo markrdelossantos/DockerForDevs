@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "./Navbar.jsx";
-import TapClone from "./TapClone.jsx";
+import Tap from "./Tap.jsx";
 
 export default class App extends React.Component {
     constructor() {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <TapClone/>
+                <Tap/>
             </div>
         );
     }
