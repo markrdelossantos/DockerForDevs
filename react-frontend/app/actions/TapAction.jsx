@@ -20,14 +20,15 @@ class TapAction {
     }
 
     sendTap(token) {
-        const api = "/api/tap/incr/" + token;
+        console.log(localStorage.getItem("dockerfordevs_login"));
+        // const api = "/api/tap/incr/" + token;
 
-        $.get(api, (data) => {
-            console.log(data);
-        })
-        .fail((someError) => {
-            console.log(someError);
-        });
+        // $.get(api, (data) => {
+        //     console.log(data);
+        // })
+        // .fail((someError) => {
+        //     console.log(someError);
+        // });
     }
 
 }

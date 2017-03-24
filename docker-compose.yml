@@ -6,8 +6,8 @@ services:
      - "8888:8080"
   frontend:
     build: ./react-frontend/
-    # ports:
-    #   - "80:80"
+    ports:
+     - "8080:8080"
     volumes:
       # OFFICE 
       - /c/Users/madelos/DockerForDevs/react-frontend:/app

@@ -10,6 +10,10 @@
     height: 100%;
 }
 
+#app > div {
+    height: 100%;
+}
+
 html, body {
     height: 100%;
 }
