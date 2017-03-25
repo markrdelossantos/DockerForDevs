@@ -1,20 +1,17 @@
 import React from "react";
 import TapAction from "../actions/TapAction.jsx";
 
-// test
-import LoginAction from "../actions/LoginAction.jsx";
-
 export default class Tap extends React.Component {
-    constructor() {
-        super();
-    }
+    constructor(props) {
+        super(props);
 
-    componentDidMount() {
-        // TapAction.sendTap();
+        this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
-        TapAction.sendTap();
+        console.log("Tapping " + this.props.token);
+        TapAction.sendTap(this.props.token);
+
     }
 
     render() {

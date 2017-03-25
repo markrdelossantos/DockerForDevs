@@ -1,36 +1,21 @@
 import $ from "jquery";
-import Alt from "alt";
-
-const altInstance = new Alt();
+import alt from "../lib/alt";
 
 class TapAction {
     constructor() {
     }
 
-    sendTest() {
-        const api = "/api/test";
-
-        $.get(api, (data) => {
-            console.log("success");
-            console.log(data);
-        })
-        .fail((someError) => {
-            console.log(someError);
-        });
-    }
-
     sendTap(token) {
-        console.log(localStorage.getItem("dockerfordevs_login"));
-        // const api = "/api/tap/incr/" + token;
+        console.log("sending token... " + token);
+        const api = "/api/tap/incr/" + token;
 
-        // $.get(api, (data) => {
-        //     console.log(data);
-        // })
-        // .fail((someError) => {
-        //     console.log(someError);
-        // });
+        $.get(api)
+        .fail(() => {
+            console.log("failed to tap (server maybe down)...");
+        });
+        return true;
     }
 
 }
 
-export default altInstance.createActions(TapAction);
+export default alt.createActions(TapAction);

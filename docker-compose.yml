@@ -10,15 +10,16 @@ services:
      - "8080:8080"
     volumes:
       # OFFICE 
-      - /c/Users/madelos/DockerForDevs/react-frontend:/app
+      # - /c/Users/madelos/DockerForDevs/react-frontend:/app
       # BAHAY
-      #  - /d/DockerForDevs/react-frontend:/app
+       - /d/DockerForDevs/react-frontend:/app
     # links:
     #   - redis
   nginx:
     image: nginx:1.11-alpine
     volumes:
-      - /c/Users/madelos/DockerForDevs/nginx:/conf:ro
+      # - /c/Users/madelos/DockerForDevs/nginx:/conf:ro
+      - /d/DockerForDevs/nginx:/conf:ro
     links:
       - frontend
     ports:

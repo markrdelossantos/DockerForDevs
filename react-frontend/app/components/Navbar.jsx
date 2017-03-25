@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "react-router";
+
 export default class Navbar extends React.Component {
     constructor() {
         super();
@@ -21,14 +23,14 @@ export default class Navbar extends React.Component {
                     <div className="navbar-collapse collapse" id="navbar-main">
                     <ul className="nav navbar-nav">
                         <li>
-                        <a href="https://bootswatch.com/help/">Company Overview</a>
+                        <Link to="/">Company Overview</Link>
                         </li>
                         <li>
-                        <a href="http://news.bootswatch.com/">About Us</a>
+                        <Link to="/">Barney's App</Link>
                         </li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li><a href="http://builtwithbootstrap.com/" target="_blank">Contact Us</a></li>
+                        <li><Link to="/">Contact Us</Link></li>
                     </ul>
                     </div>
                 </div>

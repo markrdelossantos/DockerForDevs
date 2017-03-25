@@ -40,6 +40,12 @@ public class TapService {
 		else{
 			return "-1";
 		}
-		
+	}
+	
+	@Path("/leaderboard")
+	@GET
+	@Produces("text/plain")
+	public String leaderboard() {
+		return redisClient.smembers("users").toString();
 	}
 }
