@@ -1,9 +1,15 @@
 package com.devopsbackend;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import redis.clients.jedis.Jedis;
 
@@ -44,8 +50,25 @@ public class TapService {
 	
 	@Path("/leaderboard")
 	@GET
-	@Produces("text/plain")
+	@Produces("application/json")
 	public String leaderboard() {
-		return redisClient.smembers("users").toString();
+	    List<String> allMembers = new ArrayList<String>(redisClient.smembers("users"));
+		
+		JSONArray jsonRes = new JSONArray();
+		
+		for(int i = 0; i < allMembers.size(); i++) {
+			String member = allMembers.get(i);
+			String queryString = i+1 + "";
+			
+			JSONObject object = new JSONObject();
+			object.put("name", member);
+			
+			String score = redisClient.get(queryString).isEmpty() ? "0" : redisClient.get(queryString);
+				
+			object.put("score", score);
+			jsonRes.put(object);
+		}
+		
+		return jsonRes.toString();
 	}
 }

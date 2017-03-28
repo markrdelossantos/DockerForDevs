@@ -14,6 +14,10 @@
     height: 100%;
 }
 
+#app > div > div:not(:first-child)  {
+    height: 100%;
+}
+
 html, body {
     height: 100%;
 }
