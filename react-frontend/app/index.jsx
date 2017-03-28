@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 
 import Leaderboard from "./components/Leaderboard.jsx";
 import BarneyApp from "./components/BarneyApp.jsx";
-import Placeholder from "./components/Placeholder.jsx";
 import Navbar from "./components/Navbar.jsx";
 import {Router, Route, IndexRoute} from "react-router";
 
@@ -26,8 +25,7 @@ const app = document.getElementById("app");
 ReactDOM.render(
     <Router>
         <Route path="/" component={Main}>
-            <IndexRoute component={Placeholder}/>
-            <Route path="/barneyApp" component={BarneyApp}/>
+            <IndexRoute component={BarneyApp}/>
             <Route path="/leaderboard" component={Leaderboard}/>
         </Route>
     </Router>, app);

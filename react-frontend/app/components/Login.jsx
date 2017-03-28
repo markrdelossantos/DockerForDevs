@@ -24,7 +24,7 @@ export default class Login extends React.Component {
         else {
             comp = <div>
                 <div className="form-group">
-                <input type="text" value={this.state.val} onChange={this.handleChange} className="form-control" placeholder="Search"/>
+                <input type="text" value={this.state.val} onChange={this.handleChange} className="form-control" placeholder="Enter your name"/>
                 </div>
                 <button type="submit" onClick={this.onClick} className="btn btn-default">Submit</button>
             </div>;

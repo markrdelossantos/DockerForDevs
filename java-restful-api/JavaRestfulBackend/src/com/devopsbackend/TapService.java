@@ -1,7 +1,9 @@
 package com.devopsbackend;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,53 +24,50 @@ public class TapService {
 	@GET
 	@Produces("text/plain")
 	public String tap(@PathParam("token") String token) {
-		return redisClient.incr(token).toString();
+		return redisClient.hincrBy(token, "score", 1).toString();
 	}
 	
 	@Path("/login/{user}")
 	@GET
 	@Produces("text/plain")
 	public String setToken(@PathParam("user") String user) {
-		// Register user to set...
-		long success = redisClient.sadd("users", user);
 		
-		// successfully added
-		if(success == 1) {
-			String uniqueToken = redisClient.scard("users").toString();
+		Long uniqueToken = redisClient.incr("total");
+		
+		// Try to Register this user to the all_users set
+		long success = redisClient.sadd("all_users", uniqueToken.toString());
+		
+		if(success == 1 && uniqueToken > 0) {
+			// Generate Set
+			Map<String, String> userData = new HashMap<String, String>();
+			userData.put("score", "0");
+			userData.put("name", user);
+
+			// Create Hash for this user with token as KEY
+			redisClient.hmset(uniqueToken.toString(), userData);
 			
-			// Instantiate new record for points, initially zero, with unique token as the key
-			redisClient.set(uniqueToken, "0");
-			
-			// Return the current size of the Set,
-			// that will act as the client Token for taps
-			return uniqueToken;
+			return uniqueToken.toString();
 		}
-		else{
+		else {
 			return "-1";
-		}
+		}	
 	}
 	
 	@Path("/leaderboard")
 	@GET
 	@Produces("application/json")
 	public String leaderboard() {
-	    List<String> allMembers = new ArrayList<String>(redisClient.smembers("users"));
+	    List<String> allUserTokens = new ArrayList<String>(redisClient.smembers("all_users"));
 		
 		JSONArray jsonRes = new JSONArray();
 		
-		for(int i = 0; i < allMembers.size(); i++) {
-			String member = allMembers.get(i);
-			String queryString = i+1 + "";
-			
+		for(String token: allUserTokens) {
+			Map<String, String> user = redisClient.hgetAll(token);
 			JSONObject object = new JSONObject();
-			object.put("name", member);
-			
-			String score = redisClient.get(queryString).isEmpty() ? "0" : redisClient.get(queryString);
-				
-			object.put("score", score);
+			object.put("name", user.get("name"));
+			object.put("score",  user.get("score"));
 			jsonRes.put(object);
 		}
-		
 		return jsonRes.toString();
 	}
 }

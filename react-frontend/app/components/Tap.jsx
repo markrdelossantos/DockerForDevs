@@ -17,7 +17,7 @@ export default class Tap extends React.Component {
     render() {
         return (
             <div className="container fill">
-                <div id="map" onClick={this.onClick} className="btn btn-default btn-lg btn-block">Tap!</div>
+                <div id="map" onClick={this.onClick} className="btn btn-default btn-lg btn-block">Tap this to gain points!</div>
             </div>
         );
     }
