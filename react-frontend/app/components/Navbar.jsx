@@ -1,8 +1,24 @@
 import React from "react";
 
+import AppStore from "../stores/AppStore.jsx";
+
 export default class Navbar extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {login: null};
+
+        this.storeChanged = this.storeChanged.bind(this);
+    }
+
+    componentDidMount() {
+        AppStore.listen(this.storeChanged);
+    }
+
+    storeChanged(evt) {
+        if (evt.login_details) {
+            this.setState({login: evt.login_details});
+        }
     }
 
     render() {
@@ -20,16 +36,8 @@ export default class Navbar extends React.Component {
                     </button>
                     </div>
                     <div className="navbar-collapse collapse" id="navbar-main">
-                    {/*<ul className="nav navbar-nav">
-                        <li>
-                        <Link to="/">Company Overview</Link>
-                        </li>
-                        <li>
-                        <Link to="/">Barney's App</Link>
-                        </li>
-                    </ul>*/}
                     <ul className="nav navbar-nav navbar-right">
-                        <li>{this.props.login}</li>
+                        <li>{this.state.login}</li>
                     </ul>
                     </div>
                 </div>

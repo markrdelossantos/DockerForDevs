@@ -1,14 +1,16 @@
 import React from "react";
 import Tap from "./Tap.jsx";
+import LoginAction from "../actions/LoginAction.jsx";
 
 import $ from "jquery";
+import cookie from "react-cookie";
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             val: null,
-            login_token: localStorage.getItem("dockerfordevs_login")
+            login_token: cookie.load("dockerfordevs_login")
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -37,11 +39,13 @@ export default class Login extends React.Component {
         const api = "/api/tap/login/" + this.state.val;
         $.get(api, (data) => {
             if (data !== "-1") {
-                console.log("saving local " + data);
-                localStorage.setItem("dockerfordevs_login", data);
+                cookie.save("dockerfordevs_login", data,
+                    {maxAge: 30}
+                );
                 this.setState({
                     login_token: data
                 });
+                LoginAction.doLogin(this.state.val);
             }
             else {
                 console.log("data is -1");

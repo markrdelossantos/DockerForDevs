@@ -6,8 +6,6 @@ import BarneyApp from "./components/BarneyApp.jsx";
 import Navbar from "./components/Navbar.jsx";
 import {Router, Route, IndexRoute} from "react-router";
 
-// import Link from "react-router";
-
 class Main extends React.Component {
     render() {
         return (
