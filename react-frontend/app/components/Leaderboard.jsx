@@ -47,9 +47,7 @@ export default class Leaderboard extends React.Component {
         var len = arr.length;
         for (var i = len - 1; i >= 0; i--) {
             for (var j = 1; j <= i; j++) {
-                console.log(`comparing ${arr[j - 1].name} (${arr[j - 1].score}) and ${arr[j].name}(${arr[j].score})`);
                 if (parseInt(arr[j - 1].score, 10) < parseInt(arr[j].score, 10)) {
-                    console.log(` ${arr[j - 1].name}'s score is greater, swapping...`);
                     var temp = arr[j - 1];
                     arr[j - 1] = arr[j];
                     arr[j] = temp;

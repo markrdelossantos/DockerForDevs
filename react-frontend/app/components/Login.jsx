@@ -40,7 +40,7 @@ export default class Login extends React.Component {
         $.get(api, (data) => {
             if (data !== "-1") {
                 cookie.save("dockerfordevs_login", data,
-                    {maxAge: 30}
+                    {maxAge: 3600}
                 );
                 this.setState({
                     login_token: data
