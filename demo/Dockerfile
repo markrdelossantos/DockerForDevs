@@ -1,10 +1,4 @@
-FROM java:8-alpine
-MAINTAINER fernando.mama@nokia.com
+FROM tutum/hello-world:latest
+MAINTAINER mark.delos_santos@nokia.com
 
-COPY src/ /app/src/
-RUN mkdir /dist
-RUN apk update && apk add bash vim
-
-RUN javac -d /dist /app/src/Main.java
-
-ENTRYPOINT cd /dist && java -cp . Main
+COPY yolo.txt /www/yolo.txt
